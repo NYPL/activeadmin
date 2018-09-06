@@ -110,10 +110,10 @@ module ActiveAdmin
           if @display_total
             total  = collection.total_count
             I18n.t 'active_admin.pagination.multiple', :model => entries_name, :total => total,
-              :from => offset + 1, :to => offset + collection_size
+              :from => offset + 1, :to => [offset + collection.size, total].min
           else
             I18n.t 'active_admin.pagination.multiple_without_total', :model => entries_name,
-              :from => offset + 1, :to => offset + collection_size
+              :from => offset + 1, :to => offset + collection.size
           end
         end
       end
